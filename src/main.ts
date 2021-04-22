@@ -1,3 +1,3 @@
 export default function () {
-  console.log("start program");
+    console.log('start program')
 }
