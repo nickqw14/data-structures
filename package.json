@@ -2,9 +2,11 @@
     "name": "rollup-tutorial",
     "version": "1.0.0",
     "scripts": {
-        "build": "rollup -c"
+        "build": "rollup -c",
+        "start": "node dist/bundle_esm.js"
     },
     "dependencies": {
+        "rollup": "^2.47.0",
         "ttypescript": "^1.5.12"
     },
     "devDependencies": {

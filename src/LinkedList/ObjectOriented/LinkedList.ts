@@ -31,20 +31,54 @@ export class LinkedList<E> {
     }
 
     /**
-     * Adds an element to the end of the list and increases the size.
+     * Adds an element to the end of the list and increases the size if the index param is omitted.
+     * If the index is included it makes use of the insertAt helper method to insert the element at a specific position in the list
      *
      * @param element - Generic Data
      */
-    add(element: E) {
-        if (this.size === 0) {
-            this.head = new LinkedListNode<E>(element, this.tail)
-        } else if (this.size === 1) {
-            this.tail = new LinkedListNode<E>(element, null, this.head)
-            this.head.next = this.tail
+    add(element: E, index?: number) {
+        if (typeof index === 'number') {
+            this.insertAt(element, index)
         } else {
-            const newNode = new LinkedListNode<E>(element, null, this.tail)
-            this.tail.next = newNode
-            this.tail = newNode
+            if (this.size === 0) {
+                this.head = new LinkedListNode<E>(element, this.tail)
+            } else if (this.size === 1) {
+                this.tail = new LinkedListNode<E>(element, null, this.head)
+                this.head.next = this.tail
+            } else {
+                const newNode = new LinkedListNode<E>(element, null, this.tail)
+                this.tail.next = newNode
+                this.tail = newNode
+            }
+        }
+
+        this.size++
+    }
+
+    private insertAt(element: E, index: number) {
+        if (index > this.size || index < 0) {
+            throw new Error('Index Out of Bounds')
+        }
+        if (index === 0) {
+            return this.addFirst(element)
+        }
+        if (index === this.size) {
+            return this.add(element)
+        }
+
+        let temp: LinkedListNode<E> | null = this.head
+        let tempIndex = 0
+        const newNode = new LinkedListNode<E>(element)
+        while (temp !== null) {
+            if (index === tempIndex) {
+                newNode.prev = temp.prev
+                newNode.next = temp
+                if (temp.prev) temp.prev.next = newNode
+                temp.prev = newNode
+            }
+
+            tempIndex++
+            temp = temp.next
         }
         this.size++
     }
@@ -106,10 +140,10 @@ export class LinkedList<E> {
      * @returns -1 or Element Index
      */
     indexOf(element: E) {
-        let temp = this.head
+        let temp: LinkedListNode<E> | null = this.head
         let index = 0
 
-        while (temp.next !== null) {
+        while (temp !== null) {
             if (temp.data === element) {
                 return index
             }
@@ -123,14 +157,14 @@ export class LinkedList<E> {
      * @returns A string representation of the list
      */
     toString() {
-        let temp = this.head
+        let temp: LinkedListNode<E> | null = this.head
         let str = '[ '
 
-        while (temp.next !== null) {
+        while (temp !== null) {
             if (temp === this.tail) {
                 str += temp.data + ' ]'
             } else {
-                str += temp.data + ' --> '
+                str += temp.data + ' <-> '
             }
             temp = temp.next
         }

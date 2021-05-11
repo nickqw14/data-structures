@@ -1,10 +1,11 @@
 import { LinkedList } from '../src/LinkedList/ObjectOriented/LinkedList'
 
-const myList = new LinkedList<string[]>()
+const myList = new LinkedList<string>()
 
-myList.addFirst(['hello', 'Titles!'])
-myList.addFirst(['Wow', 'this!', 'is', 'cool'])
-myList.addFirst(['Maybe', 'it!', 'will', 'work'])
+myList.add('Suck')
+myList.add('it')
+myList.add('terry')
+myList.add('man')
 
-console.log(myList.indexOf(['hello', 'Titles!']))
+myList.add('Insertion', 1)
 console.log(myList.toString())
