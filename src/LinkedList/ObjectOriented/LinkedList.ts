@@ -12,7 +12,6 @@ export class LinkedList<E> {
 
     /**
      * Adds an element to the beginining of the list and increases the size.
-     *
      * @param element - Generic Data
      */
     addFirst(element: E) {
@@ -33,7 +32,6 @@ export class LinkedList<E> {
     /**
      * Adds an element to the end of the list and increases the size if the index param is omitted.
      * If the index is included it makes use of the insertAt helper method to insert the element at a specific position in the list
-     *
      * @param element - Generic Data
      */
     add(element: E, index?: number) {
@@ -55,6 +53,12 @@ export class LinkedList<E> {
         this.size++
     }
 
+    /**
+     * Helper method to assist the add method when an Index is passed as a param, allows insertion of an element
+     * to a specific index
+     * @param element - Generic Element to be Added to list
+     * @param index - Index position of element insertion
+     */
     private insertAt(element: E, index: number) {
         if (index > this.size || index < 0) {
             throw new Error('Index Out of Bounds')
