@@ -48,9 +48,8 @@ export class LinkedList<E> {
                 this.tail.next = newNode
                 this.tail = newNode
             }
+            this.size++
         }
-
-        this.size++
     }
 
     /**
@@ -87,6 +86,22 @@ export class LinkedList<E> {
         this.size++
     }
 
+    /**
+     * Removes the last item from the List
+     */
+    removeLast() {
+        if (this.size === 0) {
+            throw new Error('No such items to Remove')
+        } else if (this.size === 1) {
+            return this.clear()
+        } else {
+            if (this.tail.prev) {
+                this.tail = this.tail.prev
+                this.tail.next = null
+            }
+        }
+        this.size--
+    }
     /**
      * Removes all items from the list and resets the size to 0.
      */
@@ -161,6 +176,9 @@ export class LinkedList<E> {
      * @returns A string representation of the list
      */
     toString() {
+        if (this.size === 0) {
+            return '[]'
+        }
         let temp: LinkedListNode<E> | null = this.head
         let str = '[ '
 
