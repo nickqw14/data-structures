@@ -6,7 +6,7 @@ export class LinkedListNode<T> {
     constructor(
         data: T | null,
         next?: LinkedListNode<T> | null,
-        prev?: LinkedListNode<T>
+        prev?: LinkedListNode<T> | null
     ) {
         this.data = data ? data : null
         this.next = next ? next : null

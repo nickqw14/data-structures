@@ -2,13 +2,12 @@ import { LinkedList } from '../src/LinkedList/ObjectOriented/LinkedList'
 
 const myList = new LinkedList()
 
-myList.addFirst('Poop')
-myList.addFirst('second')
-myList.addFirst('third')
-myList.addFirst('fourth')
-myList.addLast('fifth')
+myList.addFirst('hello')
+myList.addFirst('world')
+myList.addFirst('aga')
+myList.addFirst('a')
+myList.addFirst('v')
+myList.addFirst('x')
 
-// for (let i = 0; i < 10; i++) {
-//     console.log('NODE IS : ', myList.remove())
-// }
-console.log(myList)
+console.log(myList.indexOf('hello'))
+console.log(myList.toString())
