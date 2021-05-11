@@ -67,7 +67,7 @@ export class LinkedList<E> {
 
     /**
      * Method to check if an element is found in the list
-     *
+     * TODO - Allow deep compare since list is generic and could pass in other data structures
      * @param element - Generic Data
      * @returns True if the element param is found, false if not.
      */
