@@ -2,6 +2,12 @@ import { LinkedList } from '../LinkedList/LinkedList'
 
 interface StackInterface<T> {
     peek: () => T
+    pop: () => T
+    push: (element: T) => void
+    isEmpty: () => boolean
+    search: (element: T) => number
+    clear: () => void
+    size: () => number
 }
 /**
  * Class for Stack Data Structure
@@ -39,7 +45,7 @@ export class Stack<E> implements StackInterface<E> {
      * @returns true if stack is empty, otherwise false
      */
     isEmpty() {
-        this.list.isEmpty()
+        return this.list.isEmpty()
     }
 
     /**
@@ -54,5 +60,19 @@ export class Stack<E> implements StackInterface<E> {
             return -1
         }
         return this.list.indexOf(element) + 1
+    }
+
+    /**
+     * Removes all elements from the stack
+     */
+    clear() {
+        this.list.clear()
+    }
+
+    /**
+     * @returns size of stack
+     */
+    size() {
+        return this.list.getSize()
     }
 }
