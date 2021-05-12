@@ -8,7 +8,7 @@ interface QueueInterface<T> {
     peek: () => T
 }
 /**
- * Class for Stack Data Structure
+ * Class for Queue Data Structure
  */
 export class Queue<E> implements QueueInterface<E> {
     private list: LinkedList<E>
