@@ -6,6 +6,8 @@
         "start": "node dist/bundle_esm.js"
     },
     "dependencies": {
+        "@types/deep-equal": "^1.0.1",
+        "deep-equal": "^2.0.5",
         "rollup": "^2.47.0",
         "ttypescript": "^1.5.12"
     },

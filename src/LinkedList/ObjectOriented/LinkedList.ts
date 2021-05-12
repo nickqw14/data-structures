@@ -1,4 +1,5 @@
 import { LinkedListNode } from '../ObjectOriented/LinkedListNode'
+const deepEqual = require('deep-equal')
 export class LinkedList<E> {
     private head: LinkedListNode<E>
     private tail: LinkedListNode<E>
@@ -87,21 +88,50 @@ export class LinkedList<E> {
     }
 
     /**
-     * Removes the last item from the List
+     * Removes and returns the last element in the List
+     * @returns last element in the list
      */
     removeLast() {
+        let element
         if (this.size === 0) {
-            throw new Error('No such items to Remove')
+            throw new Error('No items to Remove')
         } else if (this.size === 1) {
-            return this.clear()
+            element = this.head.data
+            this.clear()
         } else {
             if (this.tail.prev) {
+                element = this.tail.data
                 this.tail = this.tail.prev
                 this.tail.next = null
             }
+            this.size--
         }
-        this.size--
+        return element
     }
+
+    /**
+     * Removes and returns the first element in the List
+     * @returns first element in the list
+     */
+    removeFirst() {
+        let element
+
+        if (this.size === 0) {
+            throw new Error('No items to remove')
+        } else if (this.size === 1) {
+            element = this.head.data
+            this.clear()
+        } else {
+            if (this.head.next) {
+                element = this.head.data
+                this.head = this.head.next
+                this.head.prev = null
+            }
+            this.size--
+        }
+        return element
+    }
+
     /**
      * Removes all items from the list and resets the size to 0.
      */
@@ -120,7 +150,6 @@ export class LinkedList<E> {
 
     /**
      * Method to check if an element is found in the list
-     * TODO - Allow deep compare since list is generic and could pass in other data structures
      * @param element - Generic Data
      * @returns True if the element param is found, false if not.
      */
@@ -128,10 +157,13 @@ export class LinkedList<E> {
         let temp = this.head
 
         while (temp.next !== null) {
-            if (element === temp.data) {
+            if (typeof temp.data === 'object') {
+                return deepEqual(element, temp.data)
+            } else if (element === temp.data) {
                 return true
+            } else {
+                temp = temp.next
             }
-            temp = temp.next
         }
 
         return false
