@@ -1,6 +1,9 @@
 import { LinkedListNode } from './LinkedListNode'
 const deepEqual = require('deep-equal')
 
+/**
+ * Class for Generic LinkedList Data Structure
+ */
 export class LinkedList<E> {
     private head: LinkedListNode<E>
     private tail: LinkedListNode<E>
@@ -133,6 +136,13 @@ export class LinkedList<E> {
         return element
     }
 
+    /**
+     * If no index is provided the last item in the list is removed, otherwise the item in the index position of the
+     * index param is the item to be removed and returned
+     *
+     * @param index - Index of item to be removed
+     * @return element that has been removed
+     */
     remove(index?: number) {
         if (typeof index === 'number') {
             if (index > this.size || index < 0) {
@@ -237,6 +247,13 @@ export class LinkedList<E> {
             temp = temp.next
         }
         return -1
+    }
+
+    /**
+     * @return true or false if the list is empty or not
+     */
+    isEmpty() {
+        return this.size === 0
     }
 
     /**
