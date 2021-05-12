@@ -1,4 +1,4 @@
-import { LinkedList } from '../src/LinkedList/ObjectOriented/LinkedList'
+import { LinkedList } from './LinkedList/LinkedList'
 
 const myList = new LinkedList<string>()
 

@@ -1,5 +1,6 @@
-import { LinkedListNode } from '../ObjectOriented/LinkedListNode'
+import { LinkedListNode } from './LinkedListNode'
 const deepEqual = require('deep-equal')
+
 export class LinkedList<E> {
     private head: LinkedListNode<E>
     private tail: LinkedListNode<E>
@@ -132,6 +133,40 @@ export class LinkedList<E> {
         return element
     }
 
+    remove(index?: number) {
+        if (typeof index === 'number') {
+            if (index > this.size || index < 0) {
+                throw new Error('Index out of bounds')
+            }
+            if (index === 0) {
+                return this.removeFirst()
+            }
+            if (index === this.size) {
+                return this.removeLast()
+            }
+
+            let temp: LinkedListNode<E> | null = this.head
+            let tempIndex = 0
+            let element: LinkedListNode<E> | null = null
+
+            while (temp !== null) {
+                if (index === tempIndex) {
+                    if (temp.prev && temp.next) {
+                        element = temp
+                        temp.prev.next = element.next
+                        temp.next.prev = element.prev
+                        break
+                    }
+                }
+                tempIndex++
+                temp = temp.next
+            }
+            this.size--
+            return element?.data
+        } else {
+            return this.removeLast()
+        }
+    }
     /**
      * Removes all items from the list and resets the size to 0.
      */
