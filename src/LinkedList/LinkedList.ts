@@ -1,10 +1,25 @@
 import { LinkedListNode } from './LinkedListNode'
 const deepEqual = require('deep-equal')
 
+interface LinkedListInterface<T> {
+    addFirst: (element: T) => void
+    add: (element: T, index?: number) => void
+    removeLast: () => T | undefined
+    removeFirst: () => T | undefined
+    remove: (index?: number) => T | undefined
+    clear: () => void
+    getSize: () => number
+    contains: (element: T) => boolean
+    getFirst: () => T
+    getLast: () => T
+    indexOf: (element: T) => number
+    isEmpty: () => boolean
+    toString: () => string
+}
 /**
  * Class for Generic LinkedList Data Structure
  */
-export class LinkedList<E> {
+export class LinkedList<E> implements LinkedListInterface<E> {
     private head: LinkedListNode<E>
     private tail: LinkedListNode<E>
     private size: number
@@ -99,11 +114,11 @@ export class LinkedList<E> {
         let element
         if (this.size === 0) {
             throw new Error('No items to Remove')
-        } else if (this.size === 1) {
+        } else if (this.size === 1 && this.head.data !== null) {
             element = this.head.data
             this.clear()
         } else {
-            if (this.tail.prev) {
+            if (this.tail.prev && this.tail.data !== null) {
                 element = this.tail.data
                 this.tail = this.tail.prev
                 this.tail.next = null
@@ -118,16 +133,16 @@ export class LinkedList<E> {
      * @returns first element in the list
      */
     removeFirst() {
-        let element
+        let element: E
 
-        if (this.size === 0) {
+        if (this.head.data === null) {
             throw new Error('No items to remove')
-        } else if (this.size === 1) {
+        } else if (this.size === 1 && this.head.data !== null) {
             element = this.head.data
             this.clear()
         } else {
+            element = this.head.data
             if (this.head.next) {
-                element = this.head.data
                 this.head = this.head.next
                 this.head.prev = null
             }
@@ -172,7 +187,7 @@ export class LinkedList<E> {
                 temp = temp.next
             }
             this.size--
-            return element?.data
+            return element?.data ? element.data : undefined
         } else {
             return this.removeLast()
         }
@@ -218,6 +233,9 @@ export class LinkedList<E> {
      * @returns 1st item in the list
      */
     getFirst() {
+        if (this.head.data === null) {
+            throw new Error('No such element')
+        }
         return this.head.data
     }
 
@@ -225,6 +243,9 @@ export class LinkedList<E> {
      * @returns The last item in the list
      */
     getLast() {
+        if (this.tail.data === null) {
+            throw new Error('No such element')
+        }
         return this.tail.data
     }
 

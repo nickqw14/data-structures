@@ -1,9 +1,12 @@
 import { LinkedList } from '../LinkedList/LinkedList'
 
+interface StackInterface<T> {
+    peek: () => T
+}
 /**
  * Class for Stack Data Structure
  */
-export class Stack<E> {
+export class Stack<E> implements StackInterface<E> {
     private list: LinkedList<E>
 
     constructor() {
