@@ -6,6 +6,7 @@
         "start": "node dist/bundle_esm.js",
         "test": "jest"
     },
+    "main": "dist/index.ts",
     "dependencies": {
         "@types/deep-equal": "^1.0.1",
         "@types/jest": "^26.0.23",
