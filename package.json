@@ -1,12 +1,12 @@
 {
     "name": "typescript-structures",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "scripts": {
         "build": "rm -R './dist' && rollup -c",
         "start": "node dist/bundle_esm.js",
         "test": "jest"
     },
-    "main": "dist/index.ts",
+    "main": "dist/index.js",
     "dependencies": {
         "@types/deep-equal": "^1.0.1",
         "@types/jest": "^26.0.23",

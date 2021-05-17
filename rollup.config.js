@@ -5,11 +5,11 @@ export default {
     input: 'src/index.ts',
     output: [
         {
-            file: 'dist/bundle_esm.js',
+            file: 'dist/index.js',
             format: 'esm',
         },
         {
-            file: 'dist/bundle_cjs.js',
+            file: 'dist/index_cjs.js',
             format: 'cjs',
         },
     ],
