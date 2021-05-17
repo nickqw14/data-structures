@@ -1,5 +1,5 @@
 {
-    "name": "ts-data-structures",
+    "name": "typescript-structures",
     "version": "1.0.0",
     "scripts": {
         "build": "rollup -c",
