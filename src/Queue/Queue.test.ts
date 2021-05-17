@@ -36,3 +36,18 @@ test('Peek method', () => {
     queueOfStrings.dequeue()
     expect(queueOfStrings.peek()).toBe('one')
 })
+
+test('Add all items to Queue', () => {
+    const q = new Queue<number>()
+    const arr = [1, 2, 3, 4]
+    q.addAll(arr)
+
+    expect(q.dequeue()).toBe(1)
+    expect(q.size()).toBe(3)
+    expect(q.dequeue()).toBe(2)
+    expect(q.size()).toBe(2)
+    expect(q.dequeue()).toBe(3)
+    expect(q.size()).toBe(1)
+    expect(q.dequeue()).toBe(4)
+    expect(q.size()).toBe(0)
+})

@@ -4,6 +4,7 @@ const deepEqual = require('deep-equal')
 interface LinkedListInterface<T> {
     addFirst: (element: T) => void
     add: (element: T, index?: number) => void
+    addAll: (list: T[]) => void
     removeLast: () => T | undefined
     removeFirst: () => T | undefined
     remove: (index?: number) => T | undefined
@@ -72,6 +73,16 @@ export class LinkedList<E> implements LinkedListInterface<E> {
         }
     }
 
+    /**
+     * Adds all items to Queue from an existing array
+     *
+     * @param list
+     */
+    addAll(list: E[]) {
+        list.forEach((item) => {
+            this.add(item)
+        })
+    }
     /**
      * Helper method to assist the add method when an Index is passed as a param, allows insertion of an element
      * to a specific index
@@ -214,9 +225,9 @@ export class LinkedList<E> implements LinkedListInterface<E> {
      * @returns True if the element param is found, false if not.
      */
     contains(element: E) {
-        let temp = this.head
+        let temp: LinkedListNode<E> | null = this.head
 
-        while (temp.next !== null) {
+        while (temp !== null) {
             if (typeof temp.data === 'object') {
                 return deepEqual(element, temp.data)
             } else if (element === temp.data) {

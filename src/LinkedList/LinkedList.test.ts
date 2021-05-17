@@ -78,3 +78,11 @@ test('Remove method without Index', () => {
     expect(strLinkedList.getSize()).toBe(4)
     expect(strLinkedList.contains('five')).toBeFalsy()
 })
+
+test('Add all items from an array', () => {
+    const arr = ['world', 'hello']
+    strLinkedList.addAll(arr)
+    expect(strLinkedList.contains('hello')).toBeTruthy()
+    expect(strLinkedList.contains('world')).toBeTruthy()
+    expect(strLinkedList.getSize()).toBe(7)
+})

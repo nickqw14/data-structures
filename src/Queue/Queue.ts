@@ -6,6 +6,7 @@ interface QueueInterface<T> {
     size: () => number
     clear: () => void
     peek: () => T
+    addAll: (list: T[]) => void
 }
 /**
  * Class for Queue Data Structure
@@ -51,5 +52,14 @@ export class Queue<E> implements QueueInterface<E> {
      */
     peek() {
         return this.list.getFirst()
+    }
+
+    /**
+     * Adds all items to Queue from an existing array
+     *
+     * @param list
+     */
+    addAll(list: E[]) {
+        this.list.addAll(list)
     }
 }
