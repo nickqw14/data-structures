@@ -2,7 +2,7 @@
     "name": "typescript-structures",
     "version": "1.0.0",
     "scripts": {
-        "build": "rollup -c",
+        "build": "rm -R './dist' && rollup -c",
         "start": "node dist/bundle_esm.js",
         "test": "jest"
     },
