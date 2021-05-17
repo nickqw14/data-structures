@@ -1,5 +1,5 @@
 {
-    "name": "rollup-tutorial",
+    "name": "ts-data-structures",
     "version": "1.0.0",
     "scripts": {
         "build": "rollup -c",
