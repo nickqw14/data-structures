@@ -5,7 +5,7 @@ export default {
     input: 'index.ts',
     output: [
         {
-            file: 'dist/index.js',
+            file: 'dist/index.es.js',
             format: 'esm',
         },
         {
