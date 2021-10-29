@@ -1,6 +1,6 @@
 {
     "name": "typescript-structures",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "scripts": {
         "build": "rm -R './dist' && rollup -c",
         "start": "node dist/bundle_esm.js",
