@@ -13,7 +13,7 @@ interface QueueInterface<T> {
  */
 export class Queue<E> implements QueueInterface<E> {
     private list: LinkedList<E>
-
+    /** Constructor */
     constructor() {
         this.list = new LinkedList<E>()
     }
