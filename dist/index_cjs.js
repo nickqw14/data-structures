@@ -299,6 +299,7 @@ var LinkedList = /** @class */ (function () {
  * Class for Queue Data Structure
  */
 var Queue = /** @class */ (function () {
+    /** Constructor */
     function Queue() {
         this.list = new LinkedList();
     }
@@ -404,7 +405,11 @@ var Stack = /** @class */ (function () {
     return Stack;
 }());
 
+var testFunction = function () {
+    console.log('Hello world');
+};
+
 exports.LinkedList = LinkedList;
-exports.LinkedListNode = LinkedListNode;
 exports.Queue = Queue;
 exports.Stack = Stack;
+exports.testFunction = testFunction;

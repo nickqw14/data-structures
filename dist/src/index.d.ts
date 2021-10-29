@@ -1,4 +1,4 @@
-export { LinkedList } from 'src/LinkedList/LinkedList';
-export { LinkedListNode } from 'src/LinkedList/LinkedListNode';
-export { Queue } from 'src/Queue/Queue';
-export { Stack } from 'src/Stack/Stack';
+export * from '../src/LinkedList/LinkedList';
+export * from '../src/Queue/Queue';
+export * from '../src/Stack/Stack';
+export declare const testFunction: () => void;

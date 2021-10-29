@@ -11,6 +11,7 @@ interface QueueInterface<T> {
  */
 export declare class Queue<E> implements QueueInterface<E> {
     private list;
+    /** Constructor */
     constructor();
     /**
      * Adds the element to the back of the Queue
