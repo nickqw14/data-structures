@@ -1,3 +1,15 @@
+export interface Map<K, V> {
+    clear: () => void
+    containsKey: (key: K) => boolean
+    containsValue: (value: V) => boolean
+    getEntries: () => MapEntry<K, V>[]
+    get: (key: K) => V
+    isEmpty: () => boolean
+    put: (key: K, value: V) => V
+    remove: (key: K) => V
+    getSize: () => number
+}
+
 export class MapEntry<K, V> {
     private key: K
     private value: V
