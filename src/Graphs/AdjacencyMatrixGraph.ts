@@ -13,7 +13,6 @@ import { GraphNode } from './GraphNode'
 
 //      A          B           C
 // [[0, 1, 1], [0, 0, 1] , [0, 0, 0]]
-
 export class AdjacencyMatrixGraph<T> {
     private edges: number[][]
     private nodes: GraphNode<T>[]
@@ -67,7 +66,6 @@ export class AdjacencyMatrixGraph<T> {
             this.addNode(destination)
             destination.setIndex(this.edges.length - 1)
         }
-        console.log(source.index, destination.index)
         this.edges[source.index][destination.index] = weight ?? 1
     }
 
@@ -85,6 +83,10 @@ export class AdjacencyMatrixGraph<T> {
 
     getNodes() {
         return this.nodes
+    }
+
+    getNode(index: number) {
+        return this.nodes[index]
     }
 
     getEdges() {

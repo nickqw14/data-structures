@@ -98,3 +98,38 @@ test('it adds nodes correctly when edges are created with new nodes', () => {
 
     expect(correctIndices).toEqual([0, 1, 2, 3])
 })
+
+test('it returns the correct node when node creation happens through adding a edge', () => {
+    const testUser = { firstName: 'Nick', lastName: 'Weaver' }
+
+    const nodeOne = new GraphNode(testUser)
+    const nodeTwo = new GraphNode(testUser)
+    const nodeThree = new GraphNode(testUser)
+    const nodeFour = new GraphNode(testUser)
+    directedGraph.addEdge(nodeOne, nodeTwo)
+    directedGraph.addEdge(nodeThree, nodeFour)
+
+    expect(directedGraph.getNode(0)).toBe(nodeOne)
+    expect(directedGraph.getNode(1)).toBe(nodeTwo)
+    expect(directedGraph.getNode(2)).toBe(nodeThree)
+    expect(directedGraph.getNode(3)).toBe(nodeFour)
+})
+
+test('it returns the correct node when node creation happens through addNode', () => {
+    const testUser = { firstName: 'Nick', lastName: 'Weaver' }
+
+    const nodeOne = new GraphNode(testUser)
+    const nodeTwo = new GraphNode(testUser)
+    const nodeThree = new GraphNode(testUser)
+    const nodeFour = new GraphNode(testUser)
+
+    directedGraph.addNode(nodeOne)
+    directedGraph.addNode(nodeTwo)
+    directedGraph.addNode(nodeThree)
+    directedGraph.addNode(nodeFour)
+
+    expect(directedGraph.getNode(0)).toBe(nodeOne)
+    expect(directedGraph.getNode(1)).toBe(nodeTwo)
+    expect(directedGraph.getNode(2)).toBe(nodeThree)
+    expect(directedGraph.getNode(3)).toBe(nodeFour)
+})
